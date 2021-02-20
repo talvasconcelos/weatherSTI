@@ -1,28 +1,149 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap');
 
-* {
-	margin: 0;
-}
-
-html, body {
-	font: 16px/1.21 'Monserrat', arial, sans-serif;
+html {
+	font-size: 16px;
+	font-family: 'Monserrat', arial, sans-serif;
+	line-height: 1.2;
 	font-weight: 300;
 }
 
 body {
+	font-size: 1rem;
+	line-height: 1.2222222rem;
 	background: linear-gradient(246.8deg, #88A4EC 0%, #3362D8 100%);
 	min-height: 100vh;
 	color: #fff;
 }
 
+h1, .h1 {
+  font-size: 2.8333333rem;
+  line-height: 3.6666666rem;
+  margin-top: 1.2222222rem;
+  margin-bottom: 2.4444444rem;
+}
+h2, .h2 {
+  font-size: 2rem;
+  line-height: 2.4444444rem;
+  margin-top: 1.2222222rem;
+  margin-bottom: 1.2222222rem;
+}
+h3, .h3 {
+  font-size: 1.3888889rem;
+  line-height: 2.4444444rem;
+  margin-top: 1.2222222rem;
+  margin-bottom: 0rem;
+}
+h4, .h4 {
+  font-size: 1rem;
+  line-height: 1.2222222rem;
+  margin-top: 1.2222222rem;
+  margin-bottom: 0rem;
+}
+h5, .h5 {
+  font-size: 1rem;
+  line-height: 1.2222222rem;
+  margin-top: 1.2222222rem;
+  margin-bottom: 0rem;
+}
+p, ul, ol, pre, table, blockquote {
+  margin-top: 0rem;
+  margin-bottom: 1.2222222rem;
+}
+ul ul, ol ol, ul ol, ol ul {
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+}
+
+hr, .hr {
+  border: 1px solid;
+  margin: -1px 0;
+}
+a, b, i, strong, em, small, code {
+  line-height: 0;
+}
+sub, sup {
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sup {
+  top: -0.5em;
+}
+sub {
+  bottom: -0.25em;
+}
+
 .container {
 	position: relative;
 	margin: 0 auto;
+	padding: 2rem 0;
 	width: 95%;
 	max-width: 960px;
 }
 
-header.title {
-	margin-top: 2rem;
+h1.title{
+	font-size: 2.777rem;
+	line-height: calc(1em * 1.08);
 	text-transform: uppercase;
+}
+
+h2.subtitle {
+	font-size: 1.666rem;
+	line-height: calc(1em * 0.68);
+}
+
+.btn {
+	padding: 0.3rem 0.75rem;
+	border: none;
+	border-radius: 7px;
+	cursor: pointer;
+}
+
+.info {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	height: 100%;
+}
+
+.info-title {
+	margin-bottom: 1rem;
+}
+
+h3.info-title {
+	font-size: 1.333rem;
+	line-height: calc(1em * 0.85);
+}
+
+.info-body{
+	width: 100%;
+	display: flex;
+	flex-flow: column;
+}
+
+.info-content {
+	margin-bottom: 2rem;
+}
+
+.info-cta {
+	height: 100%;
+	display: flex;
+}
+
+.info-cta > .btn {
+	align-self: flex-end;
+	background: none;
+	color: #fff;
+	border: 2px solid #fff;
+	box-sizing: border-box;
+}
+
+@media screen and (min-width: 768px) {
+	html {
+		font-size: 18px;
+	}
+
+	.info-body {
+		width: 30%;
+	}
 }
