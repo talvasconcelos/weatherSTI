@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap');
+
+* {
+	margin: 0;
+}
+
+html, body {
+	font: 16px/1.21 'Monserrat', arial, sans-serif;
+	font-weight: 300;
+}
+
+body {
+	background: linear-gradient(246.8deg, #88A4EC 0%, #3362D8 100%);
+	min-height: 100vh;
+	color: #fff;
+}
+
+.container {
+	position: relative;
+	margin: 0 auto;
+	width: 95%;
+	max-width: 960px;
+}
+
+header.title {
+	margin-top: 2rem;
+	text-transform: uppercase;
+}
