@@ -1,7 +1,34 @@
 import "./style";
 import { Info } from "./components/info";
+import {SearchBox} from "./components/search"
+import {useEffect, useState} from 'preact/hooks'
+import { API_KEY, mockDaily, mockWeek } from './key'
+
+const fetchForecast = async (city) => {
+	const rqDaily = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`)
+	const resDaily = await rqDaily.json()
+
+	const rqWeekly = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${mockDaily.coord.lat}&lon=${mockDaily.coord.lon}&exclude=current,minutely,hourly,alerts&units=metric&appid=${API_KEY}`)
+	const resWeekly = await rqWeekly.json()
+
+	return {
+		current: resDaily,
+		weekly: resWeekly
+	}
+}
 
 export default function App() {
+	const [city, setCity] = useState('Lisbon, PT')
+	const [forecast, setForecast] = useState(null)
+
+	useEffect(() => {
+		setTimeout(() => {
+			setForecast({current: mockDaily, weekly: mockWeek})
+		}, 2000)
+		// fetchForecast(city)
+		// 	.then(res => setForecast(res))
+	}, [])
+
   return (
     <div class="container">
       <header class="hero">
@@ -25,9 +52,7 @@ export default function App() {
           </Info>
         </div>
       </header>
-			<section class="search-bar">
-				<input type="text"/>
-			</section>
+			{forecast && <SearchBox city={city} setCity={setCity} current={forecast.current} weekly={forecast.weekly}/>}
     </div>
   );
 }
