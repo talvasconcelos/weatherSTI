@@ -1,41 +1,98 @@
-import {Result} from './resultCard'
+import { useRef, useState } from "preact/hooks";
+import { Result } from "./resultCard";
 
-export const SearchBox = ({city, setCity, current, weekly}) => {
-  weekly.daily.shift()
+const weekLoop = day => {
+  return {
+    date: day.dt,
+    temp: day.temp.max,
+    minMax: [Math.round(day.temp.min), Math.round(day.temp.max)],
+    wind: day.wind_speed,
+    hum: day.humidity,
+    hpa: day.pressure
+  };
+};
 
-  const {lat, lon} = current.coord
+export const SearchBox = ({ setCity, current, weekly }) => {
+  const notFound = !current || !weekly;
+
+  if (notFound) {
+    return (
+      <div class="search-wrapper">
+        <form onSubmit={submitSearch} class="search-input">
+          <input
+            type="text"
+            placeholder="search for a specific city..."
+            onchange={handleChange}
+            ref={inputSearch}
+            value={searchVal}
+          />
+        </form>
+        <div class="search-results">
+          <h2 class="title" style="color: tomato;">
+            City not found...
+          </h2>
+        </div>
+      </div>
+    );
+  }
+
+  weekly.daily.shift();
+
+  const inputSearch = useRef();
+  const [searchVal, setSearchVal] = useState("");
+
+  const handleChange = e => {
+    e.preventDefault();
+    setSearchVal(inputSearch.current.value);
+  };
+
+  const submitSearch = e => {
+    e.preventDefault();
+    setCity(searchVal);
+    setSearchVal("");
+  };
+
+  const { lat, lon } = current.coord;
   const currentData = {
     date: current.dt,
     temp: current.main.temp,
-    minMax: [current.main.temp_min, current.main.temp_max],
+    minMax: [
+      Math.round(current.main.temp_min),
+      Math.round(current.main.temp_max)
+    ],
     wind: current.wind.speed,
     hum: current.main.humidity,
     hpa: current.main.pressure
-  }
+  };
 
-  const weeklyData = (day) => {
-    console.log({day});
-    return {
-      date: day.dt,
-      temp: day.temp.max,
-      minMax: [day.temp.min, day.temp.max],
-      wind: day.wind_speed,
-      hum: day.humidity,
-      hpa: day.pressure
-    }
-  }
+  const weeklyData = weekly.daily.map(f => weekLoop(f));
+
+  const city = `${current.name}, ${current.sys.country}`;
 
   return (
     <div class="search-wrapper">
-      <input class='search-input' type="text" placeholder='search for a specific city...'/>
-      <div class='search-results'>
-        <h2 class='title'>
-        {city}
-        <span>{` [${lat}, ${lon}]`}</span>
+      <form onSubmit={submitSearch} class="search-input">
+        <input
+          type="text"
+          placeholder="search for a specific city..."
+          onchange={handleChange}
+          ref={inputSearch}
+          value={searchVal}
+        />
+      </form>
+      <div class="search-results">
+        <h2 class="title">
+          {city}
+          <span>
+            <i class="fas fa-map-pin" style="margin-left:1rem;" />
+            {` [${lat}, ${lon}]`}
+          </span>
         </h2>
         <Result today={true} data={currentData} />
-        {weekly.daily.map(f => (<Result data={weeklyData(f)} />))}
+        {weeklyData.map(f => (
+          <Result data={f} />
+        ))}
       </div>
     </div>
-  )
-}
+  );
+};
