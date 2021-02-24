@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap");
+// @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap");
 
 * {
   box-sizing: border-box;
@@ -7,7 +7,7 @@
 html {
   font-size: 16px;
   font-family: "Monserrat", arial, sans-serif;
-	font-style: normal;
+  font-style: normal;
   line-height: 1.2;
   font-weight: 300;
 }
@@ -165,7 +165,7 @@ h3.info-title {
 
 .search-wrapper {
   display: flex;
-	flex-flow: column;
+  flex-flow: column;
   align-items: center;
   padding-top: 5rem;
 }
@@ -184,27 +184,27 @@ h3.info-title {
     background: #fff;
     border: none;
     font-size: 18px;
-    color: #88A4EC;
+    color: #88a4ec;
   }
 }
 
 .search-results {
-	width: 90%;
+  width: 90%;
   max-width: 970px;
-	height: 100%;
-	background: #fff;
-	padding: 2rem;
-	z-index: 99;
-	color: black;
+  height: 100%;
+  background: #fff;
+  padding: 2rem;
+  z-index: 99;
+  color: black;
 }
 
 .search-results .title {
-	color: #4772DD;
-	margin-left: 3rem;
-	& span {
-		font-size: 16px;
-		color: #4f4f4f;
-	}
+  color: #4772dd;
+  margin-left: 3rem;
+  & span {
+    font-size: 16px;
+    color: #4f4f4f;
+  }
 }
 
 .card {
@@ -215,7 +215,7 @@ h3.info-title {
 
 .card > .date {
   font-size: 40px;
-  color: #4772DD;
+  color: #4772dd;
   font-weight: 700;
 }
 
@@ -225,14 +225,14 @@ h3.info-title {
   justify-content: center;
   & i {
     font-size: 80px;
-    color: #4772DD;
+    color: #4772dd;
     margin-right: 0.75rem;
   }
-  & span{
+  & span {
     font-size: 120px;
     line-height: 20px;
     font-weight: 700;
-    color: #4F4F4F;
+    color: #4f4f4f;
   }
 }
 
@@ -242,34 +242,34 @@ h3.info-title {
   margin-left: 1rem;
   font-size: 20px;
   & i {
-    color: #4772DD;
+    color: #4772dd;
     margin-right: 0.5rem;
   }
 }
 
 .today {
-  background: #F2F2F2;
+  background: #f2f2f2;
   box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.24);
   border-radius: 20px;
 }
 
 .today > .date {
-  color: #DD7F11;
-  & p:last-child{
+  color: #dd7f11;
+  & p:last-child {
     font-size: 20px;
-    color: #4F4F4F;
+    color: #4f4f4f;
   }
 }
 
 .today > .temp {
   & i {
-    color: #DD7F11;
+    color: #dd7f11;
   }
 }
 
 .today > .resume {
   & i {
-    color: #DD7F11;
+    color: #dd7f11;
   }
 }
 
@@ -282,8 +282,8 @@ h3.info-title {
     width: 30%;
   }
 
-	.search-input {
-		height: 5rem;
-		font-size: 28px;
-	}
+  .search-input {
+    height: 5rem;
+    font-size: 28px;
+  }
 }
